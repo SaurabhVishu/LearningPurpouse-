@@ -4,6 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {
   CalcScreenViewModel,
   HomeScreenViewModel,
+  PaymentGatwayViewModel,
   RandomScreenViewModel,
 } from '../viewModel';
 
@@ -13,9 +14,13 @@ function MyStack() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Calculate"
+        initialRouteName="paymentGateway"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={HomeScreenViewModel} />
+        <Stack.Screen
+          name="paymentGateway"
+          component={PaymentGatwayViewModel}
+        />
         <Stack.Screen name="RandomScreen" component={RandomScreenViewModel} />
         <Stack.Screen name="Calculate" component={CalcScreenViewModel} />
       </Stack.Navigator>
