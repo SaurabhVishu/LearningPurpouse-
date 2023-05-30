@@ -1,13 +1,9 @@
-import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import React, {useState} from 'react';
+import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import styles from './styles';
 import RazorpayCheckout from 'react-native-razorpay';
 
-interface PaymentData {
-  navigation: any;
-}
-
-const PaymentGatewayScreen = (PaymentData: props) => {
+const PaymentGatewayScreen = () => {
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -35,17 +31,10 @@ const PaymentGatewayScreen = (PaymentData: props) => {
               console.warn(`Error: ${error.code} | ${error.description}`);
             });
         }}
-        style={{
-          backgroundColor: 'green',
-          padding: 10,
-          borderRadius: 5,
-          width: '90%',
-          alignItems: 'center',
-        }}>
-        <Text style={{color: 'white', fontSize: 14, fontWeight: 'bold'}}>
-          Payments now here
-        </Text>
+        style={styles.paymentBtn}>
+        <Text style={styles.btnName}>Payment by RazorPay</Text>
       </TouchableOpacity>
+      <View />
     </View>
   );
 };

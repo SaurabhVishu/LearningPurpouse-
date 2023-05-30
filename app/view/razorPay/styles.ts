@@ -17,5 +17,10 @@ const styles = StyleSheet.create({
     padding: 15,
     width: '90%',
   },
+  btnName: {
+    fontSize: 14,
+    color: 'white',
+    fontWeight: 'bold',
+  },
 });
 export default styles;
