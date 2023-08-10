@@ -15,7 +15,7 @@ interface Movie {
 
 const HomeScreen = (props: HomeScreenProps) => {
   const {navigation} = props;
-  const count = useSelector((store: any) => store.count.count);
+  // const count = useSelector((store: any) => store.count.count);
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -28,15 +28,12 @@ const HomeScreen = (props: HomeScreenProps) => {
       console.error(error);
     } finally {
       setLoading(false);
-      
     }
   };
 
   useEffect(() => {
     getMovies();
   }, []);
-
-  console.log('data======>', data);
 
   return (
     <SafeAreaView style={{flex: 1}}>
@@ -47,7 +44,7 @@ const HomeScreen = (props: HomeScreenProps) => {
           <Text style={styles.moveBtnTxt}>Move to WebApp</Text>
         </TouchableOpacity>
         <Text style={styles.headingText}>Movie name from Api</Text>
-        <Text>{count}</Text>
+
         {data.map((item: Movie, index: number) => {
           return (
             <View key={index}>

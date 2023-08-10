@@ -1,8 +1,8 @@
-import React from "react";
-import RandomScreen from "../view/RandomScreen";
+import React from 'react';
+import RandomScreen from '../view/RandomScreen';
 
-interface RandomViewModelProps{
-    navigation:any
+interface RandomViewModelProps {
+  navigation: any;
 }
 var Sound = require('react-native-sound');
 
@@ -17,7 +17,12 @@ var whoosh = new Sound('whoosh.mp3', Sound.MAIN_BUNDLE, (error: any) => {
     return;
   }
   // loaded successfully
-  console.log('duration in seconds: ' + whoosh.getDuration() + 'number of channels: ' + whoosh.getNumberOfChannels());
+  console.log(
+    'duration in seconds: ' +
+      whoosh.getDuration() +
+      'number of channels: ' +
+      whoosh.getNumberOfChannels(),
+  );
 
   // Play the sound with an onEnd callback
   whoosh.play((success: any) => {
@@ -29,15 +34,14 @@ var whoosh = new Sound('whoosh.mp3', Sound.MAIN_BUNDLE, (error: any) => {
   });
 });
 
-const RandomScreenViewModel=(props:RandomViewModelProps)=>{
-    const{navigation}=props
-    return(
+const RandomScreenViewModel = (props: RandomViewModelProps) => {
+  const {navigation} = props;
+  return (
     <RandomScreen
-    {...{
-        navigation
-    }}
-    
+      {...{
+        navigation,
+      }}
     />
-    )
-}
-export default RandomScreenViewModel
+  );
+};
+export default RandomScreenViewModel;

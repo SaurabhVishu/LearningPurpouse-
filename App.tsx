@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Provider} from 'react-redux';
 import {store} from '././app/redux/store';
 import MyStack from './app/routes/stackNavigation';
-// import Home from './app/view/CalcScreen';
-// import HomeScreen from './app/view/HomeScreen';
-// import LanguageSupport from './app/view/LocalizationDemo';
-// import RandomScreen from './app/view/RandomScreen';
+import {Linking} from 'react-native';
+import CounterApp from './app/view/DetailScreen';
 
 const App = () => {
+  useEffect(() => {
+    var url = Linking.getInitialURL()
+      .then(url => {
+        if (url) {
+          Linking.openURL(url);
+        }
+      })
+      .catch(err => console.log('An error occurred', err));
+  }, []);
   return (
     <Provider store={store}>
       <MyStack />
