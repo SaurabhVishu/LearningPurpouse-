@@ -13,7 +13,7 @@ function MyStack() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Calculate"
+        initialRouteName="RandomScreen"
         screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={HomeScreenViewModel} />
         <Stack.Screen name="RandomScreen" component={RandomScreenViewModel} />

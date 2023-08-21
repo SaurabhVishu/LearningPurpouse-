@@ -1,54 +1,71 @@
-import { StyleSheet,Text,View,TouchableOpacity, SafeAreaView } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
 
-import { useSelector,useDispatch } from "react-redux";
-import { increment,decrement } from "../../redux/actions/action";
-import styles from "./style";
+// import {useSelector, useDispatch} from 'react-redux';
+import {increment, decrement} from '../../redux/actions/action';
+import styles from './style';
 
+import FirstApiCall from '../../redux/reducers/FirstApiReducer';
+import {RootState} from '../../redux/store';
 
-interface homeProps{
-    navigation:any
+interface homeProps {
+  navigation: any;
+  firstApiClick: any;
+  secondApiClick: any;
 }
 
-const Home=(props:homeProps)=>{
-    const{navigation}=props
+const Home = (props: homeProps) => {
+  const {navigation} = props;
 
-    const dispatch=useDispatch();
+  // const Data: any = useSelector((state: RootState) => state.firstApidata);
 
-    const count =useSelector((store:any)=>store.count.count);
-    
+  // console.log('data is =====>', Data);
 
-    const handleIncrement=()=>{
-        dispatch(increment());
-    }
+  // const count = useSelector((store: any) => store.count.count);
 
-    const handleDecrement=()=>{
-        dispatch(decrement());
-    }
+  // const handleIncrement = () => {};
 
-    return(
-      <SafeAreaView style={{flex:1}}>
-        <View style={styles.container}>
-        <Text style={styles.title_text}>Redux Demo</Text>
-        <Text style={styles.counter_text}>{count}</Text>
-   
-        <TouchableOpacity onPress={handleIncrement} style={styles.btn}>
-          <Text style={styles.btn_text}> Increment </Text>
-        </TouchableOpacity>
-   
+  // const handleDecrement = () => {
+  //   dispatch(decrement());
+  // };
+
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.container}>
+        <Text style={styles.title_text}>offline Api call </Text>
+
         <TouchableOpacity
-          onPress={handleDecrement}
-          style={{ ...styles.btn, backgroundColor: '#6e3b3b' }}>
-          <Text style={styles.btn_text}> Decrement </Text>
+          style={styles.btn}
+          onPress={() => props.firstApiClick()}>
+          <Text style={styles.btn_text}> First Api </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={()=>navigation.navigate("Home")}>
-            <Text>Home</Text>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => props.secondApiClick()}>
+          <Text style={styles.btn_text}> Second Api</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.btn}>
+          <Text style={styles.btn_text}>Third Api</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate(Home)}>
+          <Text
+            style={{
+              fontSize: 16,
+              color: 'black',
+              fontWeight: '900',
+              marginVertical: 15,
+            }}>
+            Move to home page
+          </Text>
         </TouchableOpacity>
       </View>
-      </SafeAreaView>
-    )
-}
-export default Home
-
-
-      
+    </SafeAreaView>
+  );
+};
+export default Home;

@@ -1,18 +1,22 @@
-import React from "react";
-import HomeScreen from "../view/HomeScreen";
-interface HomeViewModelprops{
-    navigation:any
+import React from 'react';
+import HomeScreen from '../view/HomeScreen';
+import {useSelector} from 'react-redux';
+interface HomeViewModelprops {
+  navigation: any;
 }
 
-const HomeScreenViewModel=(props:HomeViewModelprops)=>{
-    const{navigation}=props
-    return(
-        <HomeScreen
-        {...{
-            navigation
-        }}
-        />
-    )
-}
+const HomeScreenViewModel = (props: HomeViewModelprops) => {
+  const Homedata = useSelector(state => state.secondApidata);
+  console.log('Homedata======>', Homedata);
+  const {navigation} = props;
+  return (
+    <HomeScreen
+      {...{
+        navigation,
+        Homedata,
+      }}
+    />
+  );
+};
 
-export default HomeScreenViewModel
+export default HomeScreenViewModel;

@@ -59,7 +59,8 @@ const RandomScreenViewModel = (props: RandomViewModelProps) => {
 
   const handleSecondApiCall = () => {
     console.log('2 buttoncliked');
-    getSecondApiData(APIConstants.todos);
+    // getSecondApiData(APIConstants.todos);
+    dispatch(saveSecondApiData(APIConstants.todos));
   };
   const handleThirdApiCall = () => {
     console.log('3 buttoncliked');
